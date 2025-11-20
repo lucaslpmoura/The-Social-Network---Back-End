@@ -1,4 +1,4 @@
-```markdown
+
 # Back End – The Social Network
 
 Este repositório contém os serviços de back end da plataforma **The Social Network**, desenvolvidos em **Node.js** com **TypeScript**.
