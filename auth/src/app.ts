@@ -3,6 +3,7 @@ import { PRIVATE_KEY } from '@eng-sof/common';
 
 
 import express, { json } from 'express';
+import { Cors } from '@eng-sof/common';
 import jsonwebtoken from 'jsonwebtoken'
 
 const app = express();
@@ -11,6 +12,8 @@ const port = 8002;
 
 
 const dbManager = new UserDBManager();
+
+
 
 app.post('/login', async (req, res) => {
     let status = 400;
@@ -37,8 +40,9 @@ app.post('/login', async (req, res) => {
             status = 200;
             msg = 'Login made succesfully';
 
+            console.log(res.get('Access-Control-Allow-Origin'));
             res.status(status);
-            res.send({ status: status, message: msg, token: token });
+            res.send({ status: status, message: msg, token: token, userId: result[0].u_id });
         }else{
             throw new Error('Missing fields.');
         }
